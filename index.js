@@ -1,9 +1,17 @@
-import smells from "./smells.js";
 import list from "./list.js";
 const smellsDiv = document.getElementById("smells");
 const displayDiv = document.getElementById("display");
 
+const smellsSet = new Set();
 const filter = new Set();
+
+for (const type in list) {
+    for (const smell of list[type]) {
+        smellsSet.add(smell);
+    }
+}
+
+const smells = [...smellsSet];
 
 for await (const smell of smells) {
     const button = document.createElement("button");
