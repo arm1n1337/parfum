@@ -1,0 +1,1 @@
+export default ["vanille","rauch","honig"]
