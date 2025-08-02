@@ -6,8 +6,18 @@ body {
     background-color: #000000;
 }
 
-#smells,
-#content {
+#filterarea {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    width: 100%;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+}
+
+.grid {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -24,13 +34,10 @@ button {
     background-color: black;
     color: white;
     transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-#smells button {
     cursor: pointer;
 }
 
-#display {
+#display, #smells, #filterwrapper {
     margin-top: 1rem;
     background-color: #333;
     border-radius: 6px;
@@ -44,7 +51,10 @@ button {
     }
 }
 
-#smells button.selected {
-    background-color: green;
-    color: white;
+#smells button.on {
+    background-color: darkgreen;
+}
+
+#smells button.off {
+    background-color: darkred;
 }

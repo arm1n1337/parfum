@@ -1,0 +1,14 @@
+{
+    "name": "armin-parfum",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "build": "node build/build.js",
+        "watch": "node build/watch.js"
+    },
+    "devDependencies": {
+        "@types/node": "^24.1.0",
+        "esbuild": "^0.25.8",
+        "typescript": "^5.9.2"
+    }
+}

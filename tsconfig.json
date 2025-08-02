@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "strict": true,
+        "skipLibCheck": true,
+        "allowJs": false,
+        "rootDir": "src",
+        "outDir": "scripts",
+        "types": ["./type.d.ts"]
+    },
+    "exclude": ["build", "node_modules"],
+    "include": ["src"]
+}

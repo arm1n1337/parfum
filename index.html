@@ -5,12 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Parfüm Filter</title>
         <link rel="stylesheet" href="index.css" />
-        <script type="module" src="index.js"></script>
+        <script type="module" src="scripts/index.js"></script>
     </head>
     <body>
-        <div id="smells"></div>
-        <div id="display">
-            <div id="content"></div>
+        <div id="filterwrapper" class="grid">
+            <input type="text" id="filterarea" placeholder="Filter..." />
         </div>
+        <div id="smells"><div id="smelllist" class="grid"></div></div>
+        <div id="display"><div id="content" class="grid"></div></div>
     </body>
 </html>
