@@ -280,6 +280,6 @@ const list: ParfumType = {
     //     Jahreszeit: new Set<Jahr>([]),
     //     Anlass: new Set<Anlass>([]),
     // },
-};
+} as ParfumType;
 
 export default list;

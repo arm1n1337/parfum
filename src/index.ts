@@ -36,16 +36,17 @@ filterarea.addEventListener("change", () => {
     content.id = "smelllist";
     content.classList = "grid";
 
-    const active = Array.from(document.getElementById("content")!.querySelectorAll("button")).map((x) => x.textContent);
-    console.log(active);
-
     for (const smell of smellsSet) {
         if (!smell.toLowerCase().includes(filterarea.value.toLowerCase())) continue;
         const filtered = document.createElement("button");
         if (filter.has(smell)) filtered.classList = "on";
         else if (filter.has(smell)) filtered.classList = "off";
         filtered.id = smell;
-        filtered.textContent = smell;
+        let amount = 0;
+        for (const key in list) {
+            if (list[key].Alle.has(smell)) amount += 1;
+        }
+        filtered.textContent = `${smell} (${amount})`;
         addFilterFunction(filtered);
         content.appendChild(filtered);
     }
@@ -76,11 +77,40 @@ function updateList() {
         if (overlaps(filterDisabled, list[parfum].Alle)) continue;
         const filtered = document.createElement("button");
         filtered.textContent = parfum;
-        filtered.onclick = () => alert([...list[parfum].Alle].join("\n"));
+        filtered.onclick = () => popup(parfum);
         content.appendChild(filtered);
     }
 
     displayDiv.appendChild(content);
+}
+
+function popup(parfum: string) {
+    const overlay = document.createElement("div");
+    overlay.id = "top";
+
+    const backButton = document.createElement("button");
+    backButton.id = "back";
+    backButton.onclick = () => overlay.remove();
+    backButton.textContent = "×";
+
+    const title = document.createElement("span");
+    title.id = "title";
+    title.textContent = parfum;
+
+    const span = document.createElement("span");
+    span.id = "description";
+
+    for (const type in list[parfum]) {
+        if (type === "Alle") continue;
+        span.innerHTML += `<span class="bold">${type}:</span> ${[
+            ...(list[parfum][type as keyof (typeof list)[typeof parfum]] as Set<string>),
+        ].join(", ")}<br>`;
+    }
+
+    overlay.appendChild(backButton);
+    overlay.appendChild(title);
+    overlay.appendChild(span);
+    document.body.appendChild(overlay);
 }
 
 function isSubset(subset: Set<string>, superset: Set<string>) {
