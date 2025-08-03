@@ -185,14 +185,14 @@ const list: ParfumType = {
         Anlass: new Set<Anlass>(["Tagsüber", "Ausgehen", "Anlass"]),
     },
     // ! Seite 5
-    // "1974": {
-    //     Alle: new Set(),
-    //     Kopfnoten: new Set(["Ylang-Ylang", "Neroli", "Zitrusfrüchte"]),
-    //     Herznoten: new Set(["Jasmin", "Rosen", "Iris"]),
-    //     Basisnoten: new Set(["Sandelholz"]),
-    //     Jahreszeit: new Set<Jahr>([]),
-    //     Anlass: new Set<Anlass>([]),
-    // },
+    "1974": {
+        Alle: new Set(),
+        Kopfnoten: new Set(["Ylang-Ylang", "Neroli", "Zitrusfrüchte"]),
+        Herznoten: new Set(["Jasmin", "Rosen", "Iris"]),
+        Basisnoten: new Set(["Sandelholz"]),
+        Jahreszeit: new Set<Jahr>(["Frühling", "Herbst", "Winter"]),
+        Anlass: new Set<Anlass>(["Formell", "Anlass"]),
+    },
     Zahra: {
         Alle: new Set(),
         Kopfnoten: new Set(["Mandarine", "Bergamotte", "Weißer Pfirsich", "Ingwer", "Pfeffer"]),
@@ -272,14 +272,14 @@ const list: ParfumType = {
         Anlass: new Set<Anlass>(["Tagsüber", "Abends", "Anlass"]),
     },
     // ! Seite 7
-    // Yuno: {
-    //     Alle: new Set(),
-    //     Kopfnoten: new Set(["Safran", "Jasmin"]),
-    //     Herznoten: new Set(["Amber"]),
-    //     Basisnoten: new Set(["Fichtenharz", "Zedernholz"]),
-    //     Jahreszeit: new Set<Jahr>([]),
-    //     Anlass: new Set<Anlass>([]),
-    // },
+    Yuno: {
+        Alle: new Set(),
+        Kopfnoten: new Set(["Safran", "Jasmin"]),
+        Herznoten: new Set(["Amber"]),
+        Basisnoten: new Set(["Fichtenharz", "Zedernholz"]),
+        Jahreszeit: new Set<Jahr>(["Frühling", "Herbst", "Winter"]),
+        Anlass: new Set<Anlass>(["Formell", "Anlass"]),
+    },
 } as ParfumType;
 
 export default list;
