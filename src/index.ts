@@ -56,13 +56,13 @@ filterarea.addEventListener("change", () => {
 
 function addFilterFunction(button: HTMLButtonElement) {
     button.addEventListener("click", () => {
-        updateList();
         toggleFilter(button);
         if (filter.has(button.id)) {
             filter.delete(button.id);
             filterDisabled.add(button.id);
         } else if (filterDisabled.has(button.id)) filterDisabled.delete(button.id);
         else filter.add(button.id);
+        updateList();
     });
 }
 
@@ -73,8 +73,7 @@ function updateList() {
     content.classList = "grid";
 
     for (const parfum in list) {
-        if (!isSubset(filter, list[parfum].Alle)) continue;
-        if (overlaps(filterDisabled, list[parfum].Alle)) continue;
+        if (!check(list[parfum].Alle)) continue;
         const filtered = document.createElement("button");
         filtered.textContent = parfum;
         filtered.onclick = () => popup(parfum);
@@ -82,6 +81,17 @@ function updateList() {
     }
 
     displayDiv.appendChild(content);
+}
+
+function check(set: Set<string>): boolean {
+    if (filter.size === 0 && filterDisabled.size === 0) return true;
+    for (const value of filter) {
+        if (!set.has(value)) return false;
+    }
+    for (const value of set) {
+        if (filterDisabled.has(value)) return false;
+    }
+    return true;
 }
 
 function popup(parfum: string) {
@@ -111,24 +121,6 @@ function popup(parfum: string) {
     overlay.appendChild(title);
     overlay.appendChild(span);
     document.body.appendChild(overlay);
-}
-
-function isSubset(subset: Set<string>, superset: Set<string>) {
-    for (const value of subset) {
-        if (!superset.has(value)) {
-            return false;
-        }
-    }
-    return true;
-}
-
-function overlaps(setA: Set<string>, setB: Set<string>) {
-    for (const value of setA) {
-        if (setB.has(value)) {
-            return true;
-        }
-    }
-    return false;
 }
 
 function toggleFilter(button: HTMLButtonElement) {
